@@ -1,0 +1,372 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff5f8;
+  color: #333;
+}
+
+/* HEADER */
+
+header {
+  width: 100%;
+  background: #ff4fa0;
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+}
+
+.logo {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  margin-left: 25px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ffe2ef;
+}
+
+/* HERO */
+
+.hero {
+  height: 100vh;
+  background: url("images/albania-cover.jpg") center/cover no-repeat;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: white;
+  width: 70%;
+}
+
+.hero-content h1 {
+  font-size: 65px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.hero-content button {
+  padding: 15px 35px;
+  border: none;
+  background: #ff4fa0;
+  color: white;
+  border-radius: 30px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-content button:hover {
+  background: #ff2f8b;
+}
+
+/* SEARCH */
+
+.search-section {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.search-section h2 {
+  margin-bottom: 40px;
+  font-size: 40px;
+  color: #ff2f8b;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.filters select,
+.filters button {
+  padding: 15px;
+  width: 250px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+}
+
+.filters button {
+  background: #ff4fa0;
+  color: white;
+  cursor: pointer;
+}
+
+/* ACTIVITIES */
+
+.activities-section {
+  padding: 50px 10%;
+}
+
+.activities-section h2 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 50px;
+  color: #ff2f8b;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+  gap: 30px;
+}
+
+.card {
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.12);
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 25px;
+}
+
+.card-content h3 {
+  margin-bottom: 10px;
+  color: #ff2f8b;
+}
+
+.card-content p {
+  margin-bottom: 20px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.card button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background: #ff4fa0;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* BOOKING */
+
+.booking-section {
+  padding: 80px 10%;
+}
+
+.booking-box {
+  background: white;
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+}
+
+.booking-box h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ff2f8b;
+}
+
+.booking-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking-box input,
+.booking-box select {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.booking-box button {
+  padding: 16px;
+  border: none;
+  background: #ff4fa0;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* AI */
+
+.ai-section {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.ai-section h2 {
+  color: #ff2f8b;
+  margin-bottom: 20px;
+}
+
+.ai-box {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ai-box input {
+  width: 400px;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.ai-box button {
+  padding: 15px 30px;
+  border: none;
+  background: #ff4fa0;
+  color: white;
+  border-radius: 12px;
+}
+
+#aiResult {
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* MAP */
+
+.map-section {
+  padding: 80px 10%;
+}
+
+.map-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ff2f8b;
+}
+
+#map {
+  width: 100%;
+  height: 500px;
+  border-radius: 25px;
+}
+
+/* LOGIN */
+
+.login-section {
+  padding: 80px 10%;
+}
+
+.login-box {
+  background: white;
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ff2f8b;
+}
+
+.login-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-box input {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.login-box button {
+  padding: 16px;
+  border: none;
+  background: #ff4fa0;
+  color: white;
+  border-radius: 12px;
+}
+
+/* FOOTER */
+
+footer {
+  background: #ff4fa0;
+  color: white;
+  text-align: center;
+  padding: 40px;
+  margin-top: 50px;
+}
+
+footer h3 {
+  margin-bottom: 10px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+
+  .hero-content h1 {
+    font-size: 45px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .hero-content {
+    width: 90%;
+  }
+
+}

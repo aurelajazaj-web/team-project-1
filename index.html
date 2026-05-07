@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekend Albania</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    Weekend Albania
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#activities">Aktivitete</a>
+    <a href="#booking">Booking</a>
+    <a href="#ai">AI</a>
+    <a href="#login">Login</a>
+  </nav>
+
+</header>
+
+<section class="hero">
+
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1>Zbulo Shqipërinë gjatë Fundjavës</h1>
+
+    <p>
+      Rezervo aktivitete fantastike, eksploro qytete dhe merr sugjerime inteligjente nga AI.
+    </p>
+
+    <button>Eksploro Tani</button>
+  </div>
+
+</section>
+
+<section class="search-section">
+
+  <h2>Gjej Aktivitetin Ideal</h2>
+
+  <div class="filters">
+
+    <select id="citySelect">
+      <option>Zgjidh Qytetin</option>
+      <option>Tiranë</option>
+      <option>Durrës</option>
+      <option>Vlorë</option>
+      <option>Shkodër</option>
+      <option>Berat</option>
+      <option>Korçë</option>
+      <option>Sarandë</option>
+      <option>Gjirokastër</option>
+      <option>Himarë</option>
+      <option>Krujë</option>
+      <option>Theth</option>
+    </select>
+
+    <select id="categorySelect">
+      <option>Zgjidh Preferencën</option>
+      <option>Beach</option>
+      <option>Adventure</option>
+      <option>Nature</option>
+      <option>Historical</option>
+      <option>Nightlife</option>
+      <option>Food</option>
+    </select>
+
+    <button onclick="filterActivities()">
+      Kerko
+    </button>
+
+  </div>
+
+</section>
+
+<section id="activities" class="activities-section">
+
+  <h2>Aktivitetet Popullore</h2>
+
+  <div class="cards-container">
+
+    <div class="card">
+
+      <img src="images/ksamil.jpg">
+
+      <div class="card-content">
+
+        <h3>Weekend në Ksamil</h3>
+
+        <p>
+          Relaks në plazh, restorante luksoze dhe party.
+        </p>
+
+        <div class="details">
+          <span>€80</span>
+          <span>20 vende</span>
+        </div>
+
+        <button onclick="bookActivity('Ksamil')">
+          Book Now
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <img src="images/theth.jpg">
+
+      <div class="card-content">
+
+        <h3>Hiking në Theth</h3>
+
+        <p>
+          Eksploro malin dhe natyrën fantastike shqiptare.
+        </p>
+
+        <div class="details">
+          <span>€65</span>
+          <span>12 vende</span>
+        </div>
+
+        <button onclick="bookActivity('Theth')">
+          Book Now
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <img src="images/rafting.jpg">
+
+      <div class="card-content">
+
+        <h3>Rafting në Përmet</h3>
+
+        <p>
+          Aventurë adrenaline në lumin Vjosa.
+        </p>
+
+        <div class="details">
+          <span>€50</span>
+          <span>8 vende</span>
+        </div>
+
+        <button onclick="bookActivity('Permet')">
+          Book Now
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="booking" class="booking-section">
+
+  <div class="booking-box">
+
+    <h2>Rezervo Aktivitetin</h2>
+
+    <form id="bookingForm">
+
+      <input type="text" placeholder="Emri Juaj" required>
+
+      <input type="email" placeholder="Email" required>
+
+      <input type="number" placeholder="Nr.Personave" required>
+
+      <select required>
+        <option>Mënyra e Pagesës</option>
+        <option>BKT Pay</option>
+        <option>Raiffeisen Pay</option>
+        <option>PayLink Albania</option>
+      </select>
+
+      <button type="submit">
+        Paguaj & Rezervo
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+<section id="ai" class="ai-section">
+
+  <h2>AI Sugjerime</h2>
+
+  <p>
+    Shkruaj çfarë preferon dhe AI do të sugjerojë aktivitetin perfekt.
+  </p>
+
+  <div class="ai-box">
+
+    <input type="text" id="aiInput" placeholder="Shembull: beach, mountain, nightlife">
+
+    <button onclick="getAIRecommendation()">
+      Sugjero
+    </button>
+
+  </div>
+
+  <div id="aiResult"></div>
+
+</section>
+
+<section class="map-section">
+
+  <h2>Aktivitete pranë Location</h2>
+
+  <div id="map"></div>
+
+</section>
+
+<section id="login" class="login-section">
+
+  <div class="login-box">
+
+    <h2>Log In</h2>
+
+    <form id="loginForm">
+
+      <input type="email" placeholder="Email" required>
+
+      <input type="password" placeholder="Password" required>
+
+      <button type="submit">
+        Login
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <h3>Weekend Activity Recommender in Albania</h3>
+
+  <p>
+    Eksploro Shqipërinë me eksperienca të paharrueshme.
+  </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
