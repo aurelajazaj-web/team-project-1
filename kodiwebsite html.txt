@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FundJava Albania — Aktivitete &amp; Aventura</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1b4332;--green2:#2d6a4f;--green3:#40916c;
+  --sand:#f0ebe3;--sand2:#e8e0d4;--sand3:#d6cfc4;
+  --gold:#b5873d;--gold2:#e2a84b;
+  --cream:#faf8f4;--white:#fff;
+  --text:#1a1713;--text2:#4a4540;--text3:#8a8480;
+  --border:#ddd8d0;--r:14px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;font-size:16px;font-weight:300}
+
+/* TOPBAR */
+.topbar{background:var(--green);padding:0.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:rgba(255,255,255,0.75)}
+.topbar a{color:rgba(255,255,255,0.9);text-decoration:none}
+.topbar-right{display:flex;gap:2rem;align-items:center}
+.topbar-right a{display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+.topbar-right a:hover{color:#fff}
+.topbar-cta{background:var(--gold);color:#fff!important;padding:0.25rem 0.9rem;border-radius:4px;font-weight:500!important;font-size:0.82rem}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(250,248,244,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:68px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--green);text-decoration:none;letter-spacing:-0.5px}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:0.88rem;font-weight:400;transition:color 0.2s}
+.nav-links a:hover{color:var(--green)}
+.nav-phone{display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;font-weight:500;color:var(--green);text-decoration:none;border:1.5px solid var(--green);padding:0.4rem 1rem;border-radius:6px;transition:all 0.2s}
+.nav-phone:hover{background:var(--green);color:#fff}
+.nav-cta{background:var(--gold);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;font-weight:500;font-size:0.88rem;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:#9a6f2e}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:650px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.hero-left{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3.5rem;background:linear-gradient(135deg,#0d2b1d 0%,#1b4332 60%,#2d6a4f 100%);z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.8);font-size:0.72rem;letter-spacing:2.5px;text-transform:uppercase;padding:0.4rem 1rem;border-radius:4px;margin-bottom:1.5rem;width:fit-content}
+.hero-left h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,4.5rem);font-weight:600;color:#fff;line-height:1.05;margin-bottom:1.3rem}
+.hero-left h1 em{color:var(--gold2);font-style:italic}
+.hero-left p{color:rgba(255,255,255,0.7);font-size:1rem;max-width:400px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:0.8rem;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:#fff;padding:0.85rem 1.8rem;border-radius:var(--r);font-size:0.9rem;font-weight:500;font-family:'Jost',sans-serif;text-decoration:none;border:none;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.4rem}
+.btn-gold:hover{background:#9a6f2e;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.85);padding:0.85rem 1.8rem;border-radius:var(--r);font-size:0.9rem;font-weight:400;font-family:'Jost',sans-serif;text-decoration:none;border:1.5px solid rgba(255,255,255,0.35);cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.4rem}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,0.08)}
+.hero-stats{display:flex;border:1px solid rgba(255,255,255,0.12);border-radius:10px;overflow:hidden;margin-top:2.5rem;width:fit-content}
+.hero-stat{padding:0.9rem 1.5rem;text-align:center;border-right:1px solid rgba(255,255,255,0.12)}
+.hero-stat:last-child{border-right:none}
+.hero-stat .n{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#fff;line-height:1}
+.hero-stat .l{font-size:0.68rem;color:rgba(255,255,255,0.55);letter-spacing:1px;text-transform:uppercase;margin-top:0.2rem}
+.hero-right{position:relative;overflow:hidden}
+.hero-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;height:100%;gap:3px}
+.hero-mosaic img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s}
+.hero-mosaic img:hover{transform:scale(1.04)}
+.hero-mosaic .big{grid-row:1/3}
+
+/* PHONE BAR */
+.phone-bar{background:var(--green2);padding:1.2rem 2.5rem;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+.pb-item{display:flex;align-items:center;gap:0.8rem;color:#fff}
+.pb-icon{width:38px;height:38px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.pb-label{font-size:0.68rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:1px}
+.pb-val{display:block;font-size:0.95rem;font-weight:500;color:#fff;text-decoration:none}
+.pb-val:hover{color:var(--gold2)}
+
+/* SEARCH */
+.search-wrap{background:var(--white);border-bottom:1px solid var(--border);padding:1.6rem 2.5rem}
+.search-inner{display:flex;gap:0.8rem;align-items:flex-end;flex-wrap:wrap;max-width:1200px}
+.sg{display:flex;flex-direction:column;gap:0.35rem;flex:1;min-width:150px}
+.sg label{font-size:0.7rem;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:1.2px}
+.sg select,.sg input{border:1.5px solid var(--border);border-radius:8px;padding:0.65rem 0.85rem;font-size:0.9rem;font-family:'Jost',sans-serif;color:var(--text);background:var(--cream);outline:none;transition:border-color 0.2s}
+.sg select:focus,.sg input:focus{border-color:var(--green3)}
+.sbtn{background:var(--green);color:#fff;border:none;padding:0.7rem 1.8rem;border-radius:8px;font-size:0.9rem;font-family:'Jost',sans-serif;font-weight:500;cursor:pointer;transition:background 0.2s;height:44px}
+.sbtn:hover{background:var(--green2)}
+
+/* LAYOUT */
+.section{padding:5rem 2.5rem}
+.s-dark{background:var(--green);color:#fff}
+.s-sand{background:var(--sand)}
+.s-white{background:var(--white)}
+.container{max-width:1200px;margin:0 auto}
+.sec-tag{font-size:0.68rem;font-weight:500;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);margin-bottom:0.5rem}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:600;line-height:1.1;color:var(--text)}
+.sec-title-w{color:#fff}
+.sec-sub{font-size:0.93rem;color:var(--text2);margin-top:0.7rem;max-width:550px;line-height:1.7}
+.sec-sub-w{color:rgba(255,255,255,0.65)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;gap:1rem}
+.see-all{color:var(--green);font-size:0.85rem;font-weight:500;text-decoration:none;border-bottom:1px solid transparent;white-space:nowrap;transition:border-color 0.2s}
+.see-all:hover{border-color:var(--green)}
+.see-all-w{color:rgba(255,255,255,0.75);border-bottom:1px solid transparent;text-decoration:none;font-size:0.85rem;font-weight:500}
+.see-all-w:hover{color:#fff;border-color:rgba(255,255,255,0.5)}
+
+/* PILLS */
+.pills{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.pill{background:var(--white);border:1.5px solid var(--border);color:var(--text2);padding:0.4rem 1rem;border-radius:50px;font-size:0.82rem;cursor:pointer;transition:all 0.2s;font-family:'Jost',sans-serif}
+.pill:hover,.pill.active{background:var(--green);border-color:var(--green);color:#fff}
+
+/* ACTIVITY CARDS */
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.6rem}
+.acard{background:var(--white);border-radius:18px;overflow:hidden;border:1px solid var(--border);transition:transform 0.3s,box-shadow 0.3s;cursor:pointer}
+.acard:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(27,67,50,0.12)}
+.acard-img{position:relative;height:220px;overflow:hidden}
+.acard-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.acard:hover .acard-img img{transform:scale(1.07)}
+.acard-cat{position:absolute;top:14px;left:14px;background:var(--white);color:var(--green);font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;padding:0.3rem 0.75rem;border-radius:4px}
+.acard-fav{position:absolute;top:12px;right:12px;width:36px;height:36px;background:var(--white);border-radius:50%;border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:transform 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.acard-fav:hover{transform:scale(1.15)}
+.acard-stars{position:absolute;bottom:14px;right:14px;background:rgba(255,255,255,0.95);border-radius:6px;padding:0.3rem 0.6rem;font-size:0.78rem;font-weight:500;color:var(--gold)}
+.acard-body{padding:1.3rem 1.4rem 1.5rem}
+.acard-meta{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--text3);margin-bottom:0.55rem}
+.dot3{width:3px;height:3px;background:var(--border);border-radius:50%}
+.acard-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:0.5rem;line-height:1.25}
+.acard-desc{font-size:0.84rem;color:var(--text2);margin-bottom:1rem;line-height:1.6}
+.acard-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.atag{background:var(--sand);color:var(--text2);font-size:0.68rem;padding:0.2rem 0.6rem;border-radius:4px}
+.acard-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:1rem}
+.acard-price{font-size:1rem;font-weight:500;color:var(--text)}
+.acard-price span{color:var(--text3);font-size:0.78rem;font-weight:300}
+.acard-book{background:var(--green);color:#fff;border:none;padding:0.45rem 1.1rem;border-radius:7px;font-size:0.8rem;font-family:'Jost',sans-serif;font-weight:500;cursor:pointer;transition:background 0.2s}
+.acard-book:hover{background:var(--green2)}
+
+/* FEATURED */
+.feat{background:var(--green);display:grid;grid-template-columns:1.1fr 1fr;border-radius:22px;overflow:hidden;max-width:1200px;margin:0 auto 5rem}
+.feat-l{padding:3.5rem;position:relative}
+.feat-badge{display:inline-block;background:var(--gold);color:#fff;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:4px;margin-bottom:1.2rem}
+.feat-l h2{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:#fff;line-height:1.1;margin-bottom:1rem}
+.feat-l h2 em{color:var(--gold2);font-style:italic}
+.feat-l p{color:rgba(255,255,255,0.65);font-size:0.9rem;margin-bottom:0.5rem;line-height:1.7}
+.feat-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.2rem 0 1.8rem}
+.feat-pill{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.85);font-size:0.78rem;padding:0.3rem 0.8rem;border-radius:20px;border:1px solid rgba(255,255,255,0.15)}
+.feat-price{margin-bottom:1.5rem}
+.feat-old{font-size:0.9rem;color:rgba(255,255,255,0.4);text-decoration:line-through}
+.feat-new{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:#fff;font-weight:600}
+.feat-new span{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.6)}
+.feat-phone{display:flex;align-items:center;gap:0.7rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:0.8rem 1.2rem;margin-top:1rem;text-decoration:none;color:#fff;transition:background 0.2s;width:fit-content}
+.feat-phone:hover{background:rgba(255,255,255,0.14)}
+.feat-phone .ph{font-size:1rem;font-weight:500}
+.feat-phone .sub{font-size:0.72rem;color:rgba(255,255,255,0.55)}
+.feat-r{position:relative;min-height:420px}
+.feat-r img{width:100%;height:100%;object-fit:cover}
+.feat-r-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(27,67,50,0.5),transparent 50%)}
+.feat-float{position:absolute;bottom:24px;right:24px;background:var(--white);border-radius:12px;padding:1rem 1.3rem;max-width:180px}
+.feat-float .stars{color:var(--gold);font-size:0.85rem}
+.feat-float .rev{font-size:0.78rem;color:var(--text2);margin-top:0.2rem}
+.feat-float .spots{font-size:0.72rem;color:var(--gold);font-weight:500;margin-top:0.4rem}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:240px 240px;gap:6px;border-radius:18px;overflow:hidden}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;cursor:pointer}
+.gallery img:hover{transform:scale(1.04)}
+.gallery .tall{grid-row:1/3}
+
+/* REGIONS */
+.reg-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.reg-card{position:relative;border-radius:14px;overflow:hidden;height:240px;cursor:pointer}
+.reg-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.reg-card:hover img{transform:scale(1.08)}
+.reg-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,30,18,0.8) 30%,rgba(10,30,18,0.1))}
+.reg-info{position:absolute;bottom:0;left:0;right:0;padding:1.1rem;z-index:1}
+.reg-info h3{color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.reg-info .acts{color:rgba(255,255,255,0.65);font-size:0.75rem;margin-top:0.1rem}
+.reg-info .ph{color:var(--gold2);font-size:0.72rem;margin-top:0.3rem;font-weight:500}
+
+/* INFO CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start}
+.info-icon{width:46px;height:46px;background:rgba(27,67,50,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.info-card h4{font-size:0.95rem;font-weight:500;color:var(--text);margin-bottom:0.3rem}
+.info-card p{font-size:0.82rem;color:var(--text2);line-height:1.55}
+
+/* TESTIMONIALS */
+.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}
+.tcard{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:1.5rem}
+.tcard-stars{color:var(--gold2);font-size:0.9rem;margin-bottom:0.7rem}
+.tcard-text{color:rgba(255,255,255,0.75);font-size:0.87rem;line-height:1.65;margin-bottom:1rem}
+.tcard-auth{display:flex;align-items:center;gap:0.7rem}
+.tcard-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:#fff;font-weight:500;font-family:'Cormorant Garamond',serif}
+.tcard-name{font-size:0.85rem;color:#fff;font-weight:500}
+.tcard-city{font-size:0.72rem;color:rgba(255,255,255,0.45)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.ci-list .ci{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.3rem;padding-bottom:1.3rem;border-bottom:1px solid var(--border)}
+.ci-list .ci:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.ci-icon{width:42px;height:42px;background:rgba(27,67,50,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:0.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
+.ci-val{font-size:0.95rem;color:var(--text);font-weight:500;margin-top:0.1rem}
+.ci-val a{color:var(--green);text-decoration:none}
+.ci-val a:hover{text-decoration:underline}
+.ci-sub{font-size:0.78rem;color:var(--text3);margin-top:0.1rem}
+
+.form-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem}
+.form-card h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:0.4rem}
+.form-card p{font-size:0.85rem;color:var(--text2);margin-bottom:1.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:9px;padding:0.7rem 0.9rem;font-size:0.9rem;font-family:'Jost',sans-serif;color:var(--text);background:var(--cream);outline:none;margin-bottom:0.8rem;transition:border-color 0.2s}
+.fi:focus{border-color:var(--green3)}
+textarea.fi{resize:vertical;min-height:100px}
+.fsub{width:100%;background:var(--green);color:#fff;border:none;padding:0.85rem;border-radius:9px;font-size:0.95rem;font-family:'Jost',sans-serif;font-weight:500;cursor:pointer;transition:background 0.2s}
+.fsub:hover{background:var(--green2)}
+
+/* NEWSLETTER */
+.newsletter{background:linear-gradient(135deg,var(--sand),var(--sand2));padding:4rem 2.5rem;text-align:center;border-top:1px solid var(--sand3)}
+.newsletter h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--text);margin-bottom:0.8rem}
+.newsletter p{color:var(--text2);font-size:0.93rem;margin-bottom:2rem}
+.nl-form{display:flex;justify-content:center;gap:0.7rem;flex-wrap:wrap}
+.nl-form input{border:1.5px solid var(--sand3);border-radius:8px;padding:0.75rem 1.2rem;font-size:0.9rem;font-family:'Jost',sans-serif;background:var(--white);width:280px;outline:none}
+.nl-form input:focus{border-color:var(--green3)}
+
+/* FOOTER */
+footer{background:#0d2b1d;color:rgba(255,255,255,0.65);padding:4rem 2.5rem 2rem}
+.footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:#fff;margin-bottom:0.7rem}
+.f-logo span{color:var(--gold)}
+.f-desc{font-size:0.85rem;line-height:1.7;margin-bottom:1.2rem}
+.f-phone-box{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem}
+.f-ph-label{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.4);margin-bottom:0.25rem}
+.f-ph-num{color:var(--gold2);font-size:1.05rem;font-weight:500;text-decoration:none;display:block}
+.f-ph-num:hover{color:#fff}
+.f-ph-sub{font-size:0.7rem;color:rgba(255,255,255,0.35);margin-top:0.2rem}
+footer h4{color:#fff;font-size:0.82rem;font-weight:500;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.f-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
+.f-links a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;font-size:0.78rem}
+.socials{display:flex;gap:0.7rem}
+.socials a{width:34px;height:34px;background:rgba(255,255,255,0.07);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.85rem;transition:background 0.2s}
+.socials a:hover{background:rgba(255,255,255,0.16);color:#fff}
+
+/* MODAL */
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(10,25,16,0.7);z-index:500;align-items:center;justify-content:center;padding:1rem}
+.modal-ov.open{display:flex}
+.modal{background:var(--white);border-radius:20px;max-width:520px;width:100%;padding:2.2rem;position:relative;animation:popIn 0.25s ease;max-height:90vh;overflow-y:auto}
+@keyframes popIn{from{transform:scale(0.93);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-x{position:absolute;top:1.2rem;right:1.2rem;background:var(--sand);border:none;border-radius:50%;width:34px;height:34px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text2);transition:background 0.2s}
+.modal-x:hover{background:var(--sand2)}
+.modal h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;margin-bottom:0.3rem}
+.modal-sub{font-size:0.85rem;color:var(--text2);margin-bottom:0.8rem}
+.m-phone{display:flex;align-items:center;gap:0.7rem;background:var(--sand);border-radius:10px;padding:0.8rem 1rem;margin-bottom:0.7rem;text-decoration:none;color:var(--green);transition:background 0.2s}
+.m-phone:hover{background:var(--sand2)}
+.m-phone .ph{font-size:1rem;font-weight:500}
+.m-phone .ph-sub{font-size:0.72rem;color:var(--text3)}
+
+/* ANIMATIONS */
+.fi-el{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fi-el.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;height:auto}
+  .hero-right{height:300px}
+  .hero-mosaic .big{grid-row:auto}
+  .reg-grid{grid-template-columns:repeat(2,1fr)}
+  .feat{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+  .nav-links .nav-phone,.nav-links li:nth-child(n+3){display:none}
+  .topbar{display:none}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}
+  .gallery .tall{grid-row:auto}
+  .section{padding:3rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>🌿 Rezervoni sot — Udhëtoni fundjavën e ardhshme!</span>
+  <div class="topbar-right">
+    <a href="tel:+355691234567">📞 +355 69 123 4567</a>
+    <a href="tel:+355682345678">📱 +355 68 234 5678</a>
+    <a href="mailto:info@fundjava.al">✉ info@fundjava.al</a>
+    <a href="tel:+355691234567" class="topbar-cta">📲 Telefono Tani</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Fund<span>Java</span>.al</a>
+  <ul class="nav-links">
+    <li><a href="#aktivitete">Aktivitete</a></li>
+    <li><a href="#rajonet">Rajonet</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#keshilla">Këshilla</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="tel:+355691234567" class="nav-phone">📞 +355 69 123 4567</a></li>
+    <li><a href="#" class="nav-cta" onclick="openModal();return false">Rezervo</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">🌿 Shqipëria — Xhevahiri i Fshehtë i Ballkanit</div>
+    <h1>Zbulo <em>Magjinë</em><br>e Fundjavës</h1>
+    <p>Nga Alpet kristalore deri tek brigjet e arta të Jonit — çdo fundjavë sjell aventura, kulturë dhe shije të paharruara.</p>
+    <div class="hero-btns">
+      <a href="#aktivitete" class="btn-gold">🗺 Shiko Aktivitetet</a>
+      <a href="tel:+355691234567" class="btn-ghost">📞 Na Telefono</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="n">50+</div><div class="l">Aktivitete</div></div>
+      <div class="hero-stat"><div class="n">12</div><div class="l">Destinacione</div></div>
+      <div class="hero-stat"><div class="n">4.9★</div><div class="l">Vlerësim</div></div>
+      <div class="hero-stat"><div class="n">3K+</div><div class="l">Udhëtarë</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-mosaic">
+      <img class="big" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&q=90" alt="Alpet Shqiptare">
+      <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=85" alt="Riviera">
+      <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=85" alt="Plazh">
+    </div>
+  </div>
+</section>
+
+<!-- PHONE BAR -->
+<div class="phone-bar">
+  <div class="pb-item">
+    <div class="pb-icon">📞</div>
+    <div><div class="pb-label">Telefoni Kryesor</div><a href="tel:+355691234567" class="pb-val">+355 69 123 4567</a></div>
+  </div>
+  <div class="pb-item">
+    <div class="pb-icon">📱</div>
+    <div><div class="pb-label">WhatsApp &amp; Viber</div><a href="tel:+355682345678" class="pb-val">+355 68 234 5678</a></div>
+  </div>
+  <div class="pb-item">
+    <div class="pb-icon">✉️</div>
+    <div><div class="pb-label">Email</div><a href="mailto:info@fundjava.al" class="pb-val">info@fundjava.al</a></div>
+  </div>
+  <div class="pb-item">
+    <div class="pb-icon">🕐</div>
+    <div><div class="pb-label">Orari</div><span class="pb-val">E Hënë–E Diel, 08:00–20:00</span></div>
+  </div>
+  <div class="pb-item">
+    <div class="pb-icon">📍</div>
+    <div><div class="pb-label">Zyra Qendrore</div><span class="pb-val">Rruga Myslym Shyri, Tiranë</span></div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <div class="search-inner">
+    <div class="sg"><label>Destinacioni</label>
+      <select id="sel-dest">
+        <option value="">Të gjitha vendet</option>
+        <option value="tirane">Tiranë</option>
+        <option value="vlore">Vlorë</option>
+        <option value="shkoder">Shkodër</option>
+        <option value="sarande">Sarandë</option>
+        <option value="berat">Berat</option>
+        <option value="gjirokaster">Gjirokastër</option>
+        <option value="korce">Korçë</option>
+        <option value="permet">Përmet</option>
+      </select>
+    </div>
+    <div class="sg"><label>Kategoria</label>
+      <select id="sel-cat">
+        <option value="">Të gjitha</option>
+        <option value="hiking">Natyrë &amp; Hiking</option>
+        <option value="plazh">Plazh &amp; Det</option>
+        <option value="kulture">Kulturë &amp; Histori</option>
+        <option value="aventure">Aventurë</option>
+        <option value="gastronomi">Gastronomi</option>
+      </select>
+    </div>
+    <div class="sg"><label>Data e Nisjes</label><input type="date" id="sel-date"></div>
+    <div class="sg"><label>Personat</label>
+      <select>
+        <option>1 person</option><option>2 persona</option>
+        <option>3–5 persona</option><option>Grup 6+</option>
+      </select>
+    </div>
+    <button class="sbtn" onclick="filterCards()">🔍 Kërko</button>
+  </div>
+</div>
+
+<!-- ACTIVITIES -->
+<section class="section s-white" id="aktivitete">
+  <div class="container">
+    <div class="sec-head fi-el">
+      <div>
+        <div class="sec-tag">Aktivitetet e Javës</div>
+        <h2 class="sec-title">Eksperienca të Paharrueshme</h2>
+        <p class="sec-sub">Çdo aktivitet është dizajnuar nga udhëzues lokalë me njohuri të thella të territorit shqiptar.</p>
+      </div>
+      <a href="#" class="see-all">Shiko të gjitha →</a>
+    </div>
+    <div class="pills">
+      <button class="pill active" onclick="filterPill(this,'')">✨ Të gjitha</button>
+      <button class="pill" onclick="filterPill(this,'hiking')">🏔️ Hiking</button>
+      <button class="pill" onclick="filterPill(this,'plazh')">🏖️ Plazh</button>
+      <button class="pill" onclick="filterPill(this,'kulture')">🏛️ Kulturë</button>
+      <button class="pill" onclick="filterPill(this,'aventure')">🪂 Aventurë</button>
+      <button class="pill" onclick="filterPill(this,'gastronomi')">🍽️ Gastronomi</button>
+    </div>
+    <div class="grid3" id="cards-grid">
+
+      <div class="acard fi-el" data-cat="hiking" data-dest="shkoder">
+        <div class="acard-img">
+          <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=700&q=85" alt="Alpet Shqiptare">
+          <span class="acard-cat">Hiking</span>
+          <button class="acard-fav" onclick="toggleFav(this)">🤍</button>
+          <div class="acard-stars">★ 4.9 (128)</div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-meta"><span>📍 Shkodër</span><div class="dot3"></div><span>⏱ 6 orë</span><div class="dot3"></div><span>🏔️ Mesatar</span></div>
+          <h3 class="acard-title">Alpet — Rruga Valbonë–Theth</h3>
+          <p class="acard-desc">Ndër 10 ecjet më të bukura të Europës. Kalon nëpër pyje pishe, livadhe alpine dhe kaloi mbi 1,700m. Pamje mahnitëse, ajër i pastër, natyrë primitive. Udhëzues profesional i përfshirë.</p>
+          <div class="acard-tags"><span class="atag">Udhëzues Lokal</span><span class="atag">Pajisje Përfshirë</span><span class="atag">Max 12 persona</span></div>
+          <div class="acard-foot">
+            <div class="acard-price">2,500 LEK <span>/ person</span></div>
+            <button class="acard-book" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acard fi-el" data-cat="plazh" data-dest="vlore">
+        <div class="acard-img">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=85" alt="Riviera Shqiptare">
+          <span class="acard-cat">Plazh</span>
+          <button class="acard-fav" onclick="toggleFav(this)">🤍</button>
+          <div class="acard-stars">★ 4.8 (94)</div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-meta"><span>📍 Vlorë</span><div class="dot3"></div><span>⏱ Gjithë ditën</span><div class="dot3"></div><span>☀️ Të gjithë</span></div>
+          <h3 class="acard-title">Riviera — Gjiri i Lalëzit</h3>
+          <p class="acard-desc">Ujëra tirkuaz kristallinë pa turizëm masiv. Snorkel, kajak dhe varkë motorike për shpellat sekrete. Fshati Gjiri i Lalëzit ruan bukurinë natyrore autentike. Piknik me produkte lokale.</p>
+          <div class="acard-tags"><span class="atag">Snorkel &amp; Kajak</span><span class="atag">Piknik Përfshirë</span><span class="atag">Varkë Motorike</span></div>
+          <div class="acard-foot">
+            <div class="acard-price">1,500 LEK <span>/ person</span></div>
+            <button class="acard-book" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acard fi-el" data-cat="kulture" data-dest="berat">
+        <div class="acard-img">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=700&q=85" alt="Berat">
+          <span class="acard-cat">Kulturë</span>
+          <button class="acard-fav" onclick="toggleFav(this)">🤍</button>
+          <div class="acard-stars">★ 4.9 (212)</div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-meta"><span>📍 Berat</span><div class="dot3"></div><span>⏱ 5 orë</span><div class="dot3"></div><span>🏛️ Çdo moshë</span></div>
+          <h3 class="acard-title">Berat — Qyteti i Njëmijë Dritareve</h3>
+          <p class="acard-desc">Trashëgimi UNESCO me 2,400 vjet histori. Kalaja, Lagja Mangalem, Kisha e Shën Mërisë dhe Muzeu Onufri. Udhëzues me histori të pasur. Darkë tradicionale me verë lokale.</p>
+          <div class="acard-tags"><span class="atag">UNESCO</span><span class="atag">Darkë Tradicionale</span><span class="atag">Verë Lokale</span></div>
+          <div class="acard-foot">
+            <div class="acard-price">800 LEK <span>/ person</span></div>
+            <button class="acard-book" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acard fi-el" data-cat="aventure" data-dest="permet">
+        <div class="acard-img">
+          <img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=700&q=85" alt="Rafting Vjosa">
+          <span class="acard-cat">Aventurë</span>
+          <button class="acard-fav" onclick="toggleFav(this)">🤍</button>
+          <div class="acard-stars">★ 5.0 (67)</div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-meta"><span>📍 Përmet</span><div class="dot3"></div><span>⏱ 4 orë</span><div class="dot3"></div><span>💪 Avancuar</span></div>
+          <h3 class="acard-title">Rafting — Lumi i Egër i Vjosës</h3>
+          <p class="acard-desc">Vjosa — lumi i vetëm i egër i mbetur në Europë, i mbrojtur si Park Kombëtar. Rafting nëpër kanyonet mahnitëse me instruktorë të certifikuar ndërkombëtarisht. Adrenalinë maksimale!</p>
+          <div class="acard-tags"><span class="atag">Ekipament Pro</span><span class="atag">Min. 14 vjeç</span><span class="atag">Sigurimi Përfshirë</span></div>
+          <div class="acard-foot">
+            <div class="acard-price">3,500 LEK <span>/ person</span></div>
+            <button class="acard-book" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acard fi-el" data-cat="gastronomi" data-dest="tirane">
+        <div class="acard-img">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=85" alt="Gastronomi">
+          <span class="acard-cat">Gastronomi</span>
+          <button class="acard-fav" onclick="toggleFav(this)">🤍</button>
+          <div class="acard-stars">★ 4.7 (155)</div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-meta"><span>📍 Tiranë</span><div class="dot3"></div><span>⏱ 3 orë</span><div class="dot3"></div><span>🍽️ Çdo moshë</span></div>
+          <h3 class="acard-title">Tur Gastronomi — Shijat e Shqipërisë</h3>
+          <p class="acard-desc">Pazari i Ri dhe Çarshia e Vjetër. Byrek me spinaq, tavë kosi, fërgesë tiranase dhe bakllava me mjaltë. Raki tradicionale dhe verë shqiptare. Receta sekrete nga familjet lokale.</p>
+          <div class="acard-tags"><span class="atag">7 Degustime</span><span class="atag">Raki Tradicionale</span><span class="atag">Max 10 persona</span></div>
+          <div class="acard-foot">
+            <div class="acard-price">1,800 LEK <span>/ person</span></div>
+            <button class="acard-book" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acard fi-el" data-cat="plazh aventure" data-dest="sarande">
+        <div class="acard-img">
+          <img src="https://images.unsplash.com/photo-1473163928189-364b2c4e1135?w=700&q=85" alt="Ksamil">
+          <span class="acard-cat">Plazh</span>
+          <button class="acard-fav" onclick="toggleFav(this)">🤍</button>
+          <div class="acard-stars">★ 4.9 (341)</div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-meta"><span>📍 Sarandë</span><div class="dot3"></div><span>⏱ Gjithë ditën</span><div class="dot3"></div><span>🏝️ Familjar</span></div>
+          <h3 class="acard-title">Ksamil &amp; Butrint — Joni i Magjishëm</h3>
+          <p class="acard-desc">Rëra e bardhë si sheqer dhe ujë kristallin. Varkë private tek ishujt natyralë. Pasdite vizita tek Butrint antik (UNESCO) — 2,500 vjet histori. Sunset i papërsëritshëm mbi Korfuzin grek.</p>
+          <div class="acard-tags"><span class="atag">Varkë Private</span><span class="atag">Butrint UNESCO</span><span class="atag">Snorkel</span></div>
+          <div class="acard-foot">
+            <div class="acard-price">2,200 LEK <span>/ person</span></div>
+            <button class="acard-book" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acard fi-el" data-cat="kulture" data-dest="gjirokaster">
+        <div class="acard-img">
+          <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&q=85" alt="Gjirokastër">
+          <span class="acard-cat">Kulturë</span>
+          <button class="acard-fav" onclick="toggleFav(this)">🤍</button>
+          <div class="acard-stars">★ 4.8 (88)</div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-meta"><span>📍 Gjirokastër</span><div class="dot3"></div><span>⏱ 6 orë</span><div class="dot3"></div><span>🏰 Histori</span></div>
+          <h3 class="acard-title">Gjirokastër — Qyteti i Gurit</h3>
+          <p class="acard-desc">Qyteti me gurë gëlqeror — UNESCO. Kalaja osmane, Muzeu Kadare, pazari me zejtarë lokalë. Konak historik me darkë tradicionale me supe fshati. Pamje epike mbi luginën e Drinos.</p>
+          <div class="acard-tags"><span class="atag">UNESCO</span><span class="atag">Muzeu Kadare</span><span class="atag">Darkë Historike</span></div>
+          <div class="acard-foot">
+            <div class="acard-price">1,200 LEK <span>/ person</span></div>
+            <button class="acard-book" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acard fi-el" data-cat="hiking" data-dest="korce">
+        <div class="acard-img">
+          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=85" alt="Prespa">
+          <span class="acard-cat">Natyrë</span>
+          <button class="acard-fav" onclick="toggleFav(this)">🤍</button>
+          <div class="acard-stars">★ 4.7 (52)</div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-meta"><span>📍 Korçë</span><div class="dot3"></div><span>⏱ Gjithë ditën</span><div class="dot3"></div><span>🦅 Natyrë</span></div>
+          <h3 class="acard-title">Liqeni i Prespës — Tre Kufij, Një Mrekulli</h3>
+          <p class="acard-desc">Liqeni ndarë mes tre vendeve — habitat unik për pelikanë të rrallë. Manastire bizantine të fshehura, peshkim tradicional dhe peizazh pikturor. Perfekt për foto dhe birdwatching.</p>
+          <div class="acard-tags"><span class="atag">Birdwatching</span><span class="atag">Foto Tour</span><span class="atag">Manastire</span></div>
+          <div class="acard-foot">
+            <div class="acard-price">900 LEK <span>/ person</span></div>
+            <button class="acard-book" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acard fi-el" data-cat="aventure" data-dest="tirane">
+        <div class="acard-img">
+          <img src="https://images.unsplash.com/photo-1563804447971-6e113ab80713?w=700&q=85" alt="E-Bike">
+          <span class="acard-cat">Aventurë</span>
+          <button class="acard-fav" onclick="toggleFav(this)">🤍</button>
+          <div class="acard-stars">★ 4.6 (73)</div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-meta"><span>📍 Tiranë</span><div class="dot3"></div><span>⏱ 3 orë</span><div class="dot3"></div><span>🚴 E Lehtë</span></div>
+          <h3 class="acard-title">E-Bike Tiranë — Urbane &amp; Dalja</h3>
+          <p class="acard-desc">Eksploroni Tiranën me biçikletë elektrike — Bulevardi, Parku i Madh dhe fshati Petrela me kalanë mesjetare. Guida lokale tregon histori, sekrete dhe anekdota të qytetit. Kafe traditionale gjatë rrugës.</p>
+          <div class="acard-tags"><span class="atag">E-Bike Përfshirë</span><span class="atag">Helm &amp; Siguri</span><span class="atag">Kafeje Stop</span></div>
+          <div class="acard-foot">
+            <div class="acard-price">2,000 LEK <span>/ person</span></div>
+            <button class="acard-book" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<div class="feat fi-el" style="margin:0 2.5rem 5rem">
+  <div class="feat-l">
+    <div class="feat-badge">🌟 Oferta Ekskluzive e Fundjavës — 40% Zbritje</div>
+    <h2>Paketa 2 Ditë<br>Bjeshkë <em>&amp; Bujtinat</em></h2>
+    <p>Natë e plotë në bujtinë tradicionale malore, 3 vakte ushqim autentik shqiptar, udhëzues personal dhe transport round-trip nga Tirana.</p>
+    <p>Itinerar: Tiranë → Valbonë → Theth → Shkodër → Tiranë</p>
+    <div class="feat-pills">
+      <span class="feat-pill">🚐 Transport</span>
+      <span class="feat-pill">🏠 Bujtinë</span>
+      <span class="feat-pill">🍽️ 3 Vakte</span>
+      <span class="feat-pill">🧗 Udhëzues</span>
+      <span class="feat-pill">📷 Foto Tour</span>
+      <span class="feat-pill">🛡️ Sigurimi</span>
+    </div>
+    <div class="feat-price">
+      <div class="feat-old">9,000 LEK / person</div>
+      <div class="feat-new">5,400 LEK <span>/ person</span></div>
+    </div>
+    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.5rem">
+      <button class="btn-gold" onclick="openModal()">📅 Rezervo Tani</button>
+    </div>
+    <a href="tel:+355691234567" class="feat-phone">
+      <span style="font-size:1.3rem">📞</span>
+      <div><div class="ph">+355 69 123 4567</div><div class="sub">Pyesni për paketa familjare</div></div>
+    </a>
+  </div>
+  <div class="feat-r">
+    <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&q=85" alt="Bjeshkë Shqipëria">
+    <div class="feat-r-ov"></div>
+    <div class="feat-float">
+      <div class="stars" style="color:var(--gold);font-size:0.85rem">★★★★★</div>
+      <div class="rev" style="font-size:0.78rem;color:var(--text2);margin-top:0.2rem">Mbi 200 vlerësime</div>
+      <div class="spots" style="font-size:0.72rem;color:var(--gold);font-weight:500;margin-top:0.4rem">⚡ Vetëm 8 vende mbetur!</div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="section s-sand" id="galeria">
+  <div class="container">
+    <div class="sec-head fi-el">
+      <div>
+        <div class="sec-tag">Galeria</div>
+        <h2 class="sec-title">Shqipëria nga Sytë e Udhëtarëve</h2>
+        <p class="sec-sub">Foto reale nga aktivitetet tona — momente autentike, bukuri e paprekur.</p>
+      </div>
+    </div>
+    <div class="gallery fi-el">
+      <img class="tall" src="https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?w=900&q=85" alt="Liqeni Komanit">
+      <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=600&q=85" alt="Bregdet">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=85" alt="Male">
+      <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&q=85" alt="Peizazh">
+      <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=85" alt="Det Jonian">
+    </div>
+  </div>
+</section>
+
+<!-- REGIONS -->
+<section class="section s-white" id="rajonet">
+  <div class="container">
+    <div class="sec-head fi-el">
+      <div>
+        <div class="sec-tag">Destinacionet</div>
+        <h2 class="sec-title">Eksploro Sipas Rajonit</h2>
+      </div>
+      <a href="#" class="see-all">Shiko hartën →</a>
+    </div>
+    <div class="reg-grid fi-el">
+      <div class="reg-card">
+        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=500&q=85" alt="Tiranë">
+        <div class="reg-info"><h3>Tiranë</h3><div class="acts">23 aktivitete</div><div class="ph">📞 +355 69 123 4567</div></div>
+      </div>
+      <div class="reg-card">
+        <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=500&q=85" alt="Vlorë">
+        <div class="reg-info"><h3>Vlorë &amp; Riviera</h3><div class="acts">31 aktivitete</div><div class="ph">📞 +355 69 123 4567</div></div>
+      </div>
+      <div class="reg-card">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=85" alt="Shkodër">
+        <div class="reg-info"><h3>Shkodër &amp; Veri</h3><div class="acts">18 aktivitete</div><div class="ph">📞 +355 69 123 4567</div></div>
+      </div>
+      <div class="reg-card">
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=500&q=85" alt="Sarandë">
+        <div class="reg-info"><h3>Sarandë &amp; Jugu</h3><div class="acts">27 aktivitete</div><div class="ph">📞 +355 69 123 4567</div></div>
+      </div>
+      <div class="reg-card">
+        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=500&q=85" alt="Berat">
+        <div class="reg-info"><h3>Berat &amp; Korçë</h3><div class="acts">15 aktivitete</div><div class="ph">📞 +355 69 123 4567</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="section s-sand" id="keshilla">
+  <div class="container">
+    <div class="sec-head fi-el">
+      <div>
+        <div class="sec-tag">Udhëzues Praktik</div>
+        <h2 class="sec-title">Gjithçka që Duhet të Dini</h2>
+        <p class="sec-sub">Këshilla nga udhëtarë me eksperiencë dhe udhëzues lokalë me mbi 10 vjet përvojë.</p>
+      </div>
+    </div>
+    <div class="info-grid fi-el">
+      <div class="info-card"><div class="info-icon">📅</div><div><h4>Planifikoni 1 Javë Para</h4><p>Gjatë sezonit të verës, vendet mbushen brenda 48 orësh. Rezervoni herët për çmim të mirë dhe zgjedhje të plotë aktivitetesh.</p></div></div>
+      <div class="info-card"><div class="info-icon">👟</div><div><h4>Pajisje Hikingu Esenciale</h4><p>Këpucë waterproof, çantë uji 2L, xhaketë shtresë e dytë (alpet janë të ftohta edhe verën), krema diellore SPF 50+. Kurrë sandale në mal.</p></div></div>
+      <div class="info-card"><div class="info-icon">💰</div><div><h4>Paraja &amp; Kursi</h4><p>Leku (ALL): 1€ ≈ 105 LEK. Karta bankare pranohet në qytete. Mbajni kesh për fshatrat malorë, pazaret dhe bujtinarët.</p></div></div>
+      <div class="info-card"><div class="info-icon">🌡️</div><div><h4>Koha Ideale e Vizitës</h4><p>Bregdeti: Maj–Tetor, 25–35°C. Malet: Qershor–Shtator, 15–22°C. Prilli — lule alpine, zero turizëm masiv. Dhjetori — ski Dardhë.</p></div></div>
+      <div class="info-card"><div class="info-icon">🚗</div><div><h4>Transporti Rekomandar</h4><p>Makina me qira: 25€/ditë. Furgon Tiranë–Shkodër: 350 LEK. Tiranë–Sarandë: 700 LEK. Për grupe ofrojmë minibus privat.</p></div></div>
+      <div class="info-card"><div class="info-icon">📶</div><div><h4>SIM Turistike &amp; Internet</h4><p>ALBtelecom ose Vodafone: 500 LEK/javë, 10GB data. 4G në 85% territorit. Zona malore — shkarkoni Maps.me para nisjes.</p></div></div>
+      <div class="info-card"><div class="info-icon">🛡️</div><div><h4>Siguria &amp; Sigurimi</h4><p>Shqipëria është shumë e sigurt. Sigurimi i udhëtimit: 5–15€/person. Bashkëpunojmë me Sigal Uniqa për aktivitetet tona.</p></div></div>
+      <div class="info-card"><div class="info-icon">🍴</div><div><h4>Buxheti Mesatar Ditor</h4><p>Drekë lokale: 400–700 LEK. Darkë: 800–2,000 LEK. Bujtinë: 1,500–3,000 LEK/natë. Kafe: 80–150 LEK. Vlerë e shkëlqyer!</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section s-dark">
+  <div class="container">
+    <div class="sec-head fi-el">
+      <div>
+        <div class="sec-tag" style="color:var(--gold2)">Vlerësimet</div>
+        <h2 class="sec-title sec-title-w">Histori të Vërteta, Emocione Reale</h2>
+        <p class="sec-sub sec-sub-w">Mbi 3,000 udhëtarë kanë besuar tek ne. Lexoni përvojat e tyre.</p>
+      </div>
+      <a href="#" class="see-all-w">Të gjitha →</a>
+    </div>
+    <div class="test-grid fi-el">
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Rruga Valbonë–Theth ishte eksperienca më e bukur e jetës sime. Udhëzuesi Agim dinte çdo gur dhe çdo histori të atyre maleve. Do kthehemi vitin tjetër!"</p><div class="tcard-auth"><div class="tcard-av">MA</div><div><div class="tcard-name">Mirela Ago</div><div class="tcard-city">Tiranë · Qershor 2025</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Ksamil me familjen — 4 ditë paradizë! Organizimi perfekt, varka jonë private, plazhet pa njerëz. Fëmijët ende flasin për peshqit. Rezervova tashmë verën tjetër."</p><div class="tcard-auth"><div class="tcard-av">EK</div><div><div class="tcard-name">Erjon Kelmendi</div><div class="tcard-city">Shkodër · Gusht 2025</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Rafting në Vjosë — adrenalinë maksimale! Instruktorë profesionistë, pajisje top. Vjosa është mrekulli natyrore. Çmimi i rezervimit nëpër telefon ishte i shpejtë dhe i lehtë!"</p><div class="tcard-auth"><div class="tcard-av">SB</div><div><div class="tcard-name">Sara Berisha</div><div class="tcard-city">Durrës · Shtator 2025</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Tur gastronomi Tiranë — surprizë totale! Kaq shumë shije unike nuk i imagjinonim. Byrek i sapodalë dhe raki luleshtrydhe — nuk kemi fjalë. Na telefononi dhe rezervoni!"</p><div class="tcard-auth"><div class="tcard-av">DH</div><div><div class="tcard-name">Drita Hoxha</div><div class="tcard-city">Elbasan · Korrik 2025</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section s-white" id="kontakt">
+  <div class="container">
+    <div class="sec-head fi-el">
+      <div>
+        <div class="sec-tag">Kontaktoni Na</div>
+        <h2 class="sec-title">Na Gjeni Gjithkund</h2>
+        <p class="sec-sub">Jemi këtu 7 ditë në javë — telefononi, shkruani ose ejani direkt.</p>
+      </div>
+    </div>
+    <div class="contact-grid fi-el">
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;margin-bottom:1rem">Informacionet e Kontaktit</h3>
+        <p style="font-size:0.9rem;color:var(--text2);margin-bottom:2rem">Ekipi ynë i dedikuar është gati t'ju ndihmojë të planifikoni fundjavën perfekte shqiptare.</p>
+        <div class="ci-list">
+          <div class="ci"><div class="ci-icon">📞</div><div><div class="ci-label">Telefon Kryesor</div><div class="ci-val"><a href="tel:+355691234567">+355 69 123 4567</a></div><div class="ci-sub">E Hënë–E Diel, 08:00–20:00</div></div></div>
+          <div class="ci"><div class="ci-icon">📱</div><div><div class="ci-label">WhatsApp &amp; Viber</div><div class="ci-val"><a href="tel:+355682345678">+355 68 234 5678</a></div><div class="ci-sub">Përgjigje brenda 30 minutave</div></div></div>
+          <div class="ci"><div class="ci-icon">🆘</div><div><div class="ci-label">Emergjenca 24/7</div><div class="ci-val"><a href="tel:+355695678901">+355 69 567 8901</a></div><div class="ci-sub">Vetëm gjatë aktiviteteve aktive</div></div></div>
+          <div class="ci"><div class="ci-icon">✉️</div><div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:info@fundjava.al">info@fundjava.al</a></div><div class="ci-sub">Rezervime: rezervo@fundjava.al</div></div></div>
+          <div class="ci"><div class="ci-icon">📍</div><div><div class="ci-label">Zyra Qendrore — Tiranë</div><div class="ci-val">Rruga Myslym Shyri, Nr. 24</div><div class="ci-sub">E Hënë–E Premte, 09:00–18:00</div></div></div>
+          <div class="ci"><div class="ci-icon">🏖️</div><div><div class="ci-label">Zyra Verore — Sarandë</div><div class="ci-val"><a href="tel:+355674567890">+355 67 456 7890</a></div><div class="ci-sub">Maj–Tetor · Bulevardi Kryesor</div></div></div>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3>Dërgoni Kërkesën</h3>
+        <p>Plotësoni formularin — do t'ju kontaktojmë brenda 2 orëve.</p>
+        <div class="form-row">
+          <input type="text" class="fi" placeholder="Emri">
+          <input type="text" class="fi" placeholder="Mbiemri">
+        </div>
+        <input type="email" class="fi" style="width:100%" placeholder="Email-i juaj">
+        <input type="tel" class="fi" style="width:100%" placeholder="📞 Numri i telefonit (+355...)">
+        <select class="fi" style="width:100%">
+          <option value="">Zgjidhni aktivitetin...</option>
+          <option>Alpet — Valbonë–Theth</option>
+          <option>Riviera — Gjiri i Lalëzit</option>
+          <option>Berat — Qyteti Muzé</option>
+          <option>Rafting Vjosë</option>
+          <option>Tur Gastronomi Tiranës</option>
+          <option>Ksamil &amp; Butrint</option>
+          <option>Gjirokastër — Qyteti i Gurit</option>
+          <option>Prespa — Liqeni i Tre Kufijve</option>
+          <option>E-Bike Tiranë</option>
+          <option>Paketa 2 Ditë Bjeshkë</option>
+          <option>Tjetër</option>
+        </select>
+        <div class="form-row">
+          <input type="date" class="fi" id="f-date">
+          <select class="fi">
+            <option>2 persona</option><option>3–5 persona</option>
+            <option>6–10 persona</option><option>10+ persona</option>
+          </select>
+        </div>
+        <textarea class="fi" style="width:100%" placeholder="Mesazhi, kërkesa speciale, dieta, fëmijë etj..."></textarea>
+        <button class="fsub" onclick="submitContact()">📩 Dërgoni Kërkesën</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="sec-tag" style="margin-bottom:0.7rem;display:block">📮 Lajmërime Javore</div>
+  <h2>Mos Humbisni Asnjë Aventurë</h2>
+  <p>Merr oferta ekskluzive, itinerare të reja dhe udhëzues çdo fundjavë — drejtpërdrejt në email.</p>
+  <div class="nl-form">
+    <input type="email" id="nl-email" placeholder="emri@juaj.al">
+    <button class="btn-gold" onclick="subscribe()">Abonohu Falas →</button>
+  </div>
+  <p id="nl-msg" style="margin-top:1rem;color:var(--green);font-weight:500;display:none">✅ Faleminderit! Jeni abonuar me sukses.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="f-logo">Fund<span>Java</span>.al</div>
+      <p class="f-desc">Platforma nr.1 shqiptare për aktivitete fundjavore. Lidhim njerëzit me natyrën, kulturën dhe aventurën e paharrueshme të Shqipërisë.</p>
+      <div class="f-phone-box">
+        <div class="f-ph-label">Na Telefononi</div>
+        <a href="tel:+355691234567" class="f-ph-num">📞 +355 69 123 4567</a>
+        <a href="tel:+355682345678" class="f-ph-num" style="font-size:0.88rem;margin-top:0.2rem">📱 +355 68 234 5678</a>
+        <div class="f-ph-sub">E Hënë–E Diel · 08:00–20:00</div>
+      </div>
+    </div>
+    <div>
+      <h4>Aktivitete</h4>
+      <ul class="f-links">
+        <li><a href="#">🏔️ Hiking &amp; Natyrë</a></li>
+        <li><a href="#">🏖️ Plazh &amp; Det</a></li>
+        <li><a href="#">🏛️ Kulturë &amp; Histori</a></li>
+        <li><a href="#">🪂 Aventurë</a></li>
+        <li><a href="#">🍽️ Gastronomi</a></li>
+        <li><a href="#">🎿 Ski Dimëror</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Destinacionet</h4>
+      <ul class="f-links">
+        <li><a href="#">Tiranë &amp; Periferia</a></li>
+        <li><a href="#">Vlorë &amp; Riviera</a></li>
+        <li><a href="#">Shkodër &amp; Alpet</a></li>
+        <li><a href="#">Sarandë &amp; Ksamil</a></li>
+        <li><a href="#">Berat &amp; Gjirokastër</a></li>
+        <li><a href="#">Korçë &amp; Prespa</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <ul class="f-links">
+        <li><a href="#">Rreth Nesh</a></li>
+        <li><a href="mailto:info@fundjava.al">✉ info@fundjava.al</a></li>
+        <li><a href="tel:+355691234567">📞 +355 69 123 4567</a></li>
+        <li><a href="tel:+355682345678">📱 +355 68 234 5678</a></li>
+        <li><a href="#">📍 Rruga Myslym Shyri 24</a></li>
+        <li><a href="#">Politika e Privatësisë</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 FundJava.al — Të gjitha të drejtat të rezervuara · Tiranë, Shqipëri</span>
+    <div class="socials">
+      <a href="#" title="Instagram">📸</a>
+      <a href="#" title="Facebook">👍</a>
+      <a href="#" title="TikTok">🎵</a>
+      <a href="#" title="YouTube">▶️</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-ov" id="modal" onclick="closeOuter(event)">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <h3>Rezervo Aktivitetin</h3>
+    <p class="modal-sub">Plotësoni formularin ose na telefononi direkt — është më e shpejtë!</p>
+    <a href="tel:+355691234567" class="m-phone">
+      <span style="font-size:1.3rem">📞</span>
+      <div><div class="ph">+355 69 123 4567</div><div class="ph-sub">Linja kryesore · 08:00–20:00 çdo ditë</div></div>
+    </a>
+    <a href="tel:+355682345678" class="m-phone">
+      <span style="font-size:1.3rem">📱</span>
+      <div><div class="ph">+355 68 234 5678</div><div class="ph-sub">WhatsApp &amp; Viber · Përgjigje të shpejtë</div></div>
+    </a>
+    <div style="display:flex;flex-direction:column;gap:0.7rem">
+      <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem">
+        <input type="text" class="fi" placeholder="Emri">
+        <input type="text" class="fi" placeholder="Mbiemri">
+      </div>
+      <input type="tel" class="fi" style="width:100%" placeholder="📞 Telefoni (+355...)">
+      <input type="email" class="fi" style="width:100%" placeholder="Email-i juaj">
+      <select class="fi" style="width:100%">
+        <option value="">Zgjidhni aktivitetin...</option>
+        <option>Alpet — Valbonë–Theth</option>
+        <option>Riviera — Gjiri i Lalëzit</option>
+        <option>Berat — Qyteti Muzé</option>
+        <option>Rafting Vjosë</option>
+        <option>Tur Gastronomi</option>
+        <option>Ksamil &amp; Butrint</option>
+        <option>Paketa 2 Ditë Bjeshkë</option>
+        <option>Tjetër</option>
+      </select>
+      <input type="date" class="fi" style="width:100%" id="m-date">
+      <button class="fsub" onclick="submitForm()">📩 Dërgoni Kërkesën</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const d = new Date();
+  ['sel-date','f-date','m-date'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.valueAsDate = d;
+  });
+
+  function openModal(){document.getElementById('modal').classList.add('open')}
+  function closeModal(){document.getElementById('modal').classList.remove('open')}
+  function closeOuter(e){if(e.target===document.getElementById('modal'))closeModal()}
+  function submitForm(){closeModal();alert('✅ Faleminderit! Kërkesa u dërgua.\nDo ju kontaktojmë brenda 2 orëve.\n\nOse telefononi tani: +355 69 123 4567')}
+  function submitContact(){alert('✅ Mesazhi u dërgua me sukses!\nDo ju kontaktojmë brenda 2 orëve.\n\nPër urgjencë: +355 69 123 4567')}
+  function toggleFav(btn){btn.textContent=btn.textContent==='🤍'?'❤️':'🤍'}
+
+  function filterPill(btn,cat){
+    document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#cards-grid .acard').forEach(c=>{
+      c.style.display=(cat===''||c.dataset.cat.includes(cat))?'':'none';
+    });
+  }
+
+  function filterCards(){
+    const dest=document.getElementById('sel-dest').value;
+    const cat=document.getElementById('sel-cat').value;
+    let found=0;
+    document.querySelectorAll('#cards-grid .acard').forEach(c=>{
+      const ok=(!dest||c.dataset.dest===dest)&&(!cat||c.dataset.cat.includes(cat));
+      c.style.display=ok?'':'none';
+      if(ok)found++;
+    });
+    if(!found){
+      document.querySelectorAll('#cards-grid .acard').forEach(c=>c.style.display='');
+      alert('Nuk u gjet asnjë aktivitet për kriteret e zgjedhura.\nDuke shfaqur të gjitha!\n\nNdihmë: +355 69 123 4567');
+    }
+  }
+
+  function subscribe(){
+    const e=document.getElementById('nl-email');
+    if(!e.value||!e.value.includes('@')){alert('Shkruani email të vlefshëm!');return}
+    document.getElementById('nl-msg').style.display='block';
+    e.value='';
+  }
+
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach((en,i)=>{
+      if(en.isIntersecting)setTimeout(()=>en.target.classList.add('vis'),i*70);
+    });
+  },{threshold:0.08});
+  document.querySelectorAll('.fi-el').forEach(el=>obs.observe(el));
+
+  document.querySelectorAll('.acard').forEach(card=>{
+    card.addEventListener('click',e=>{
+      if(e.target.classList.contains('acard-fav')||e.target.closest('.acard-fav')||e.target.classList.contains('acard-book'))return;
+      openModal();
+    });
+  });
+</script>
+</body>
+</html>
